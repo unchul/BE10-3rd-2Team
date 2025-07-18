@@ -1,0 +1,13 @@
+server:
+  port: 2345
+
+spring:
+  application:
+    name: config-server
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: file:///C:/proj/msa-exercise-team2/config-repo
+          default-label: main

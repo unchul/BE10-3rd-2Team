@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: account
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/anonymous_guestbook?serverTimezone=Asia/Seoul
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: eddi@123
+
+
+
+server:
+  port: 11335
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:6241/eureka
+
+logging:
+  level:
+    com.example.account: DEBUG
+    org.springframework.data.redis: DEBUG

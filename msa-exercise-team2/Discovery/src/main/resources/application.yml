@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: discovery
+
+server:
+  port: 6241
+
+eureka:
+  instance:
+    hostname: localhost
+
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+
+
+    service-url:
+      defaultZone: http://localhost:6241/eureka/
+
+    server:
+      enable-self-preservation: false
+
+    cluster:
+      peer-eureka-nodes: http://localhost:6241/eureka/

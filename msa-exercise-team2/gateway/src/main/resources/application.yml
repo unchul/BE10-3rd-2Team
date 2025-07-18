@@ -1,0 +1,61 @@
+server:
+  port: 4873
+
+spring:
+  application:
+    name: gateway
+  main:
+    web-application-type: reactive
+
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials
+
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:3000"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+      routes:
+        - id: anonymous-guestbook
+          uri: lb://anonymous-guestbook
+          predicates:
+            - Path=/api/guestbook/**
+          filters:
+            - StripPrefix=1
+            - SetRequestHeader=Accept, application/json
+
+        - id: account
+          uri: lb://account
+          predicates:
+            - Path=/api/account/**
+          filters:
+            - StripPrefix=1
+            - SetRequestHeader=Accept, application/json
+
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:6241/eureka
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG

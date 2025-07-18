@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="account" options="-parameters" />
+      <module name="account.main" options="-parameters" />
+      <module name="account.test" options="-parameters" />
+      <module name="anonymous-guestbook" options="-parameters" />
+      <module name="anonymous-guestbook.main" options="-parameters" />
+      <module name="anonymous-guestbook.test" options="-parameters" />
+      <module name="com.example.anonymous-guestbook.main" options="-parameters" />
+      <module name="com.example.anonymous-guestbook.test" options="-parameters" />
+    </option>
+  </component>
+</project>
